@@ -13,8 +13,19 @@ public class CountLettersTest {
 
     @Test
     public void lastWordDoesNotMatch() {
-        int words = new CountLetters().count("cats|dog");
-        Assertions.assertEquals(1, words);
+        int words = new CountLetters().count("cats|car|dog");
+        Assertions.assertEquals(2, words);
     }
 
+    @Test
+    public void lastCharIsInvalid() {
+        int words = new CountLetters().count("cats|car|dog|");
+        Assertions.assertEquals(2, words);
+    }
+
+    @Test
+    public void lastWordMatches() {
+        int words = new CountLetters().count("cats|car");
+        Assertions.assertEquals(2, words);
+    }
 }
